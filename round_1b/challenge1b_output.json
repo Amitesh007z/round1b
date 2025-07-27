@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "input_documents": [
+      "inputs/Breakfast Ideas.pdf",
+      "inputs/Dinner Ideas - Mains_1.pdf",
+      "inputs/Dinner Ideas - Mains_2.pdf",
+      "inputs/Dinner Ideas - Mains_3.pdf",
+      "inputs/Dinner Ideas - Sides_1.pdf",
+      "inputs/Dinner Ideas - Sides_2.pdf",
+      "inputs/Dinner Ideas - Sides_3.pdf",
+      "inputs/Dinner Ideas - Sides_4.pdf",
+      "inputs/Lunch Ideas.pdf"
+    ],
+    "persona": "Food Contractor",
+    "job_to_be_done": "Prepare a vegetarian buffet-style dinner menu for a corporate gathering, including gluten-free items.",
+    "processing_timestamp": "2025-07-27T15:04:13.433678Z"
+  },
+  "extracted_sections": [
+    {
+      "document": "Breakfast Ideas.pdf",
+      "section_title": "Cottage Cheese and Fruit",
+      "importance_rank": 1,
+      "page_number": 13
+    },
+    {
+      "document": "Lunch Ideas.pdf",
+      "section_title": "Couscous Salad",
+      "importance_rank": 2,
+      "page_number": 12
+    },
+    {
+      "document": "Dinner Ideas - Mains_2.pdf",
+      "section_title": "Grilled Cheese Sandwich",
+      "importance_rank": 3,
+      "page_number": 12
+    },
+    {
+      "document": "Dinner Ideas - Sides_3.pdf",
+      "section_title": "Käsespätzle (Cheese Noodles)",
+      "importance_rank": 4,
+      "page_number": 4
+    },
+    {
+      "document": "Dinner Ideas - Mains_3.pdf",
+      "section_title": "Cooked couscous for serving",
+      "importance_rank": 5,
+      "page_number": 7
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "Breakfast Ideas.pdf",
+      "refined_text": "Ingredients: •\n1 cup cottage cheese • 1/2 cup fresh berries •\n1 tablespoon honey Instructions: • In a bowl, combine cottage cheese and fresh berries. • Drizzle with honey. • Serve immediately.",
+      "page_number": 13
+    },
+    {
+      "document": "Lunch Ideas.pdf",
+      "refined_text": " A vegetarian buffet-style dinner menu for a corporate gathering includes gluten-free items . The recipe includes couscous, cherry tomatoes, cucumber, red onion, and feta cheese . Gluten-free dishes are written in detail for a Food Contractor whose task is to prepare a vegetarian-free dinner menu . The dish is a vegetarian buffet style menu for corporate gatherings . The menu includes gluten free items . For more information, visit http://www.vegetarian-menu.com/glutenfree-menu-guests .",
+      "page_number": 12
+    },
+    {
+      "document": "Dinner Ideas - Mains_2.pdf",
+      "refined_text": " 4 slices of cheddar cheese, 8 slices bread and 4 slices mozzarella cheese . 1/4 cup butter . Cook sandwiches in a skillet until golden brown and cheese is melted . Serve warm with a slice of cheese between two slices of bread, buttered side out of the bread . Gluten-free sandwiches can be ordered by a Food Contractor for a corporate gathering . For confidential support call the Samaritans on 08457 90 90 90, visit a local Samaritans branch or click here for details .",
+      "page_number": 12
+    },
+    {
+      "document": "Dinner Ideas - Sides_3.pdf",
+      "refined_text": " Ingredients: 2 cups flour, 1/2 cup milk, 3 eggs, 3 teaspoons of salt and 1/4 teaspoon nutmeg . 1 cup grated cheese . 1 small onion . Bake at 350°F (175°C) for 15 minutes until cheese is melted . Sauté sliced onion in butter until golden in a baking dish, top with cheese . Serve warm with spaetzle and served warm with a slice of onion in a small bowl of ice cream . Spaetzle is a vegetarian buffet-style dinner menu .",
+      "page_number": 4
+    },
+    {
+      "document": "Dinner Ideas - Mains_3.pdf",
+      "refined_text": " In a large pot, brown chicken thighs on all sides, then set aside . Sauté onion and garlic until softened . Stir in cumin, cinnamon, and turmeric, then add chicken broth, apricots, and olives . Cover the pot and simmer for 45 minutes until tender . Garnish with parsley and serve over couscous . For a Food Contractor whose task is to Prepare a vegetarian buffet-style dinner menu for a corporate gathering, including gluten-free items .",
+      "page_number": 7
+    }
+  ]
+}
