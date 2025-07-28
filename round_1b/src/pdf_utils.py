@@ -2,7 +2,7 @@ import os
 import json
 import re
 from pathlib import Path
-import fitz  # PyMuPDF
+import fitz
 from collections import Counter, defaultdict
 from langdetect import detect, DetectorFactory
 from statistics import median, mode
@@ -10,7 +10,7 @@ import numpy as np
 from sklearn.cluster import DBSCAN
 import networkx as nx
 
-DetectorFactory.seed = 0  # Consistent language detection
+DetectorFactory.seed = 0
 
 def is_mostly_ascii(text):
     return sum(1 for c in text if ord(c) < 128) / max(1, len(text)) > 0.85
@@ -55,7 +55,7 @@ def is_heading_candidate(text, is_bold, size, heading_sizes, repeated_lines):
         return False
     if not is_bold and size < min(heading_sizes):
         return False
-    if len(text) < 4 or len(text.split()) < 1:  # removed `> 7` check here
+    if len(text) < 4 or len(text.split()) < 1:
         return False
     if text.strip()[-1:] in ".,:;!?":
         return False
@@ -93,7 +93,7 @@ def extract_title_and_title_lines(doc):
             if size >= max_size * 0.85 and y0 < 200:
                 title_lines.add(line_text.strip().lower())
 
-    # Collect all lines with the largest font size on the first page as title lines
+
     for b in blocks:
         for line in b.get("lines", []):
             line_text = " ".join([span["text"].strip() for span in line.get("spans", []) if span["text"].strip()])
@@ -102,7 +102,7 @@ def extract_title_and_title_lines(doc):
             size = max([span.get("size", 0) for span in line.get("spans", [])])
             if abs(size - max_size) < 0.1:
                 title_lines.add(line_text.strip().lower())
-    # Join all title lines for the full title
+
     title = "  ".join([line for line in title_lines])
     if not title:
         title = doc.metadata.get("title")
@@ -113,14 +113,14 @@ def extract_title_and_title_lines(doc):
     return title, title_lines
 
 def get_body_size(font_sizes):
-    # Use average and std deviation to set a more flexible threshold
+
     mean = np.mean(font_sizes)
     std = np.std(font_sizes)
-    return round(mean + 0.25 * std, 1)  # Include slightly larger text as body
+    return round(mean + 0.25 * std, 1)
 
 
 def assign_heading_levels(font_sizes, body_size):
-    # All unique sizes > body_size are heading sizes
+
     heading_sizes = sorted(set([fs for fs in font_sizes if fs > body_size]), reverse=True)
     size_to_level = {}
     for idx, fs in enumerate(heading_sizes):
@@ -145,7 +145,6 @@ def find_repeated_lines(line_info, num_pages):
     return repeated
 
 def is_numbered_heading(text):
-    # Matches patterns like 1.1, 2.3.4, etc. (at least one dot)
     return bool(re.match(r'^\d+(\.\d+)+', text.strip()))
 
 def get_numbering_level(text):
@@ -156,7 +155,6 @@ def get_numbering_level(text):
     return None
 
 def merge_multiline_headings(candidates):
-    # Merge consecutive heading candidates with same size and close y-position
     merged = []
     i = 0
     while i < len(candidates):
@@ -181,7 +179,7 @@ def gnn_refine_headings(candidates):
             c1, c2 = candidates[i], candidates[j]
             if c1["page"] == c2["page"] and abs(c1["size"] - c2["size"]) < 1.1 and abs(c1["y0"] - c2["y0"]) < 2 * c1["size"]:
                 G.add_edge(i, j)
-    # Simple propagation: if a node is strongly connected to others, boost its score
+
     refined = []
     for idx in G.nodes:
         node = G.nodes[idx]
@@ -318,18 +316,18 @@ def extract_outline_from_pdf(pdf_path):
             "size": line["size"],
             "numbering_level": None
         })
-    # --- Post-process: enforce hierarchy based on numbering ---
+
     def get_parent_numbering(num):
         if not num or '.' not in num:
             return None
         return '.'.join(num.split('.')[:-1])
-    # Build a map from numbering to heading index
+
     numbering_to_idx = {}
     for idx, h in enumerate(raw_headings):
         m = re.match(r'^(\d+(?:\.\d+)+)', h["text"].strip())
         if m:
             numbering_to_idx[m.group(1)] = idx
-    # Bottom-up pass: promote parents as needed
+
     changed = True
     while changed:
         changed = False
@@ -355,18 +353,17 @@ def extract_outline_from_pdf(pdf_path):
     }
 
 def is_true_heading(text, size, is_bold, min_size, max_size):
-    # Must be at the most common heading size
     if size < min_size or size > max_size:
         return False
-    # Should be bold or all caps or title case
+
     if not is_bold and not text.istitle() and not text.isupper():
         return False
-    # Should not start with a bullet, dash, or number
+
     if text.strip().startswith(("-", "•", "*")):
         return False
     if re.match(r"^[0-9]+\. ", text.strip()):
         return False
-    # Should not be too short (e.g., < 3 words)
+
     if len(text.split()) < 3:
         return False
     return True
@@ -383,7 +380,7 @@ def extract_sections_with_text(pdf_path, outline):
     sections = []
     if not outline:
         return sections
-    # Find the most common heading font size
+
     font_sizes = [h.get("size") for h in outline if h.get("size")]
     if font_sizes:
         min_size, max_size = min(font_sizes), max(font_sizes)
@@ -396,10 +393,10 @@ def extract_sections_with_text(pdf_path, outline):
             filtered_outline = [h for h in outline if h.get("level") == most_common_level]
         else:
             filtered_outline = outline
-    # Prepare heading positions: (page, y0, idx in filtered_outline)
+
     heading_locs = []
     for idx, h in enumerate(filtered_outline):
-        page_num = h["page"] - 1  # fitz pages are 0-indexed
+        page_num = h["page"] - 1
         heading_text = h["text"].strip()
         y0 = None
         page = doc[page_num]
@@ -413,7 +410,7 @@ def extract_sections_with_text(pdf_path, outline):
             if y0 is not None:
                 break
         heading_locs.append({"idx": idx, "page": page_num, "y0": y0 if y0 is not None else 0, "heading_text": heading_text})
-    # For each heading, extract text up to next heading
+
     for i, h in enumerate(filtered_outline):
         if not h["text"] or len(h["text"].strip()) < 3:
             continue
@@ -445,8 +442,8 @@ def extract_sections_with_text(pdf_path, outline):
     return sections
 
 def process_pdfs():
-    input_dir = Path("/app/input")
-    output_dir = Path("/app/output")
+    input_dir = Path("./inputs")
+    output_dir = Path("./output")
     output_dir.mkdir(parents=True, exist_ok=True)
     pdf_files = list(input_dir.glob("*.pdf"))
     print(f"Found {len(pdf_files)} PDF(s): {[f.name for f in pdf_files]}")
@@ -457,11 +454,11 @@ def process_pdfs():
             output_file = output_dir / f"{pdf_file.stem}.json"
             with open(output_file, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
-            print(f"✅ Output written to {output_file.name}")
+            print(f" Output written to {output_file.name}")
         except Exception as e:
-            print(f"❌ Error processing {pdf_file.name}: {e}")
+            print(f" Error processing {pdf_file.name}: {e}")
 
 if __name__ == "__main__":
-    print("🌍 Starting improved PDF outline extraction...")
+    print(" Starting improved PDF outline extraction...")
     process_pdfs()
-    print("🎉 All PDFs processed.")
+    print(" All PDFs processed.")

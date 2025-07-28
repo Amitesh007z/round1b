@@ -1,10 +1,8 @@
---extra-index-url https://download.pytorch.org/whl/cpu
 PyMuPDF
 numpy<2
 scikit-learn
 spacy
 langdetect
 networkx
-transformers
 sentence-transformers
-torch==2.6.0+cpu
+pyspellchecker
