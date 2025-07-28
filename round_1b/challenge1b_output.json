@@ -1,77 +1,74 @@
 {
   "metadata": {
     "input_documents": [
-      "inputs/Breakfast Ideas.pdf",
-      "inputs/Dinner Ideas - Mains_1.pdf",
-      "inputs/Dinner Ideas - Mains_2.pdf",
-      "inputs/Dinner Ideas - Mains_3.pdf",
-      "inputs/Dinner Ideas - Sides_1.pdf",
-      "inputs/Dinner Ideas - Sides_2.pdf",
-      "inputs/Dinner Ideas - Sides_3.pdf",
-      "inputs/Dinner Ideas - Sides_4.pdf",
-      "inputs/Lunch Ideas.pdf"
+      "../inputs/South of France - Cities.pdf",
+      "../inputs/South of France - Cuisine.pdf",
+      "../inputs/South of France - History.pdf",
+      "../inputs/South of France - Restaurants and Hotels.pdf",
+      "../inputs/South of France - Things to Do.pdf",
+      "../inputs/South of France - Tips and Tricks.pdf",
+      "../inputs/South of France - Traditions and Culture.pdf"
     ],
-    "persona": "Food Contractor",
-    "job_to_be_done": "Prepare a vegetarian buffet-style dinner menu for a corporate gathering, including gluten-free items.",
-    "processing_timestamp": "2025-07-28T17:41:24.606874Z"
+    "persona": "Travel Planner",
+    "job_to_be_done": "Plan a trip of 4 days for a group of 10 college friends.",
+    "processing_timestamp": "2025-07-28T16:09:56.272728Z"
   },
   "extracted_sections": [
     {
-      "document": "Lunch Ideas.pdf",
-      "section_title": "2 tablespoons Caesar dressing",
+      "document": "South of France - Cities.pdf",
+      "section_title": "Travel Tips",
       "importance_rank": 1,
       "page_number": 2
     },
     {
-      "document": "Dinner Ideas - Mains_3.pdf",
-      "section_title": "Pork Schnitzel",
+      "document": "South of France - Tips and Tricks.pdf",
+      "section_title": "Spring (March to May)",
       "importance_rank": 2,
-      "page_number": 1
+      "page_number": 3
     },
     {
-      "document": "Dinner Ideas - Sides_2.pdf",
-      "section_title": "Cornbread",
+      "document": "South of France - Restaurants and Hotels.pdf",
+      "section_title": "Budget-Friendly Restaurants",
       "importance_rank": 3,
       "page_number": 2
     },
     {
-      "document": "Dinner Ideas - Mains_1.pdf",
-      "section_title": "Sliced green onions for garnish",
+      "document": "South of France - Things to Do.pdf",
+      "section_title": "Beach Hopping",
       "importance_rank": 4,
-      "page_number": 4
+      "page_number": 2
     },
     {
-      "document": "Dinner Ideas - Sides_3.pdf",
-      "section_title": "Hot and Sour Soup",
+      "document": "South of France - Cuisine.pdf",
+      "section_title": "Types of Food",
       "importance_rank": 5,
-      "page_number": 1
+      "page_number": 2
     }
   ],
   "subsection_analysis": [
     {
-      "document": "Lunch Ideas.pdf",
-      "refined_text": "2 tablespoons grated Parmesan cheese • Optional: croutons for extra crunch Instructions: • Lay the tortilla flat and spread the Caesar dressing evenly. • Add the chicken, lettuce, and Parmesan cheese. • Roll up the tortilla tightly and slice in half.",
+      "document": "South of France - Cities.pdf",
+      "refined_text": "i Best Time to Visit : The best time to visit the South of France is during the spring april to june and fall september to october when the weather is pleasant and the tourist crowds are smaller i Transportation : The region is well-connected by an extensive network of trains buses and flights i Language : While French is the social language English is widely spoken in tourist areas",
       "page_number": 2
     },
     {
-      "document": "Dinner Ideas - Mains_3.pdf",
-      "refined_text": "i In a large skillet heat vegetable oil over medium heat i Cook cutlets until golden and crispy on both sides i Serve with lemon slices",
-      "page_number": 1
+      "document": "South of France - Tips and Tricks.pdf",
+      "refined_text": "i clothing Light sweaters long-sleeve shirts t-shirts, and a light jacket or raincoat i footwear Comfortable walking shoes and sandals i Additional tips Spring can be unpredictable so be prepared for both sunny and rainy days",
+      "page_number": 3
     },
     {
-      "document": "Dinner Ideas - Sides_2.pdf",
-      "refined_text": "i Ingredients : o 1 cup cornmeal o 1 cup flour o 1/4 cup sugar o 1 tablespoon baking powder o 1/2 teaspoon salt o 1 cup milk o 1/4 cup vegetable oil o 1 egg i Instructions : o Preheat oven to 400°F (200°C). o Mix cornmeal flour sugar baking powder and salt in a bowl o Serve warm",
+      "document": "South of France - Restaurants and Hotels.pdf",
+      "refined_text": "i Le compton du march (Nice): This bistro overs a variety of traditional French dishes at adorable prices The cozy atmosphere and friendly stay make it a great spot for a casual meal The cozy atmosphere and friendly stay make it a great spot for a casual meal",
       "page_number": 2
     },
     {
-      "document": "Dinner Ideas - Mains_1.pdf",
-      "refined_text": "i Marinate chicken thighs in the mixture for at least 30 minutes i Cook chicken thighs until browned and cooked through i Serve chicken over cooked rice garnished with sliced green onions",
-      "page_number": 4
+      "document": "South of France - Things to Do.pdf",
+      "refined_text": "i Marseille to Cassis : Explore the stunning limestone clips and hidden coves of calques National park i Cannes : Enjoy the sandy beaches and luxury beach clubs along the Boulevard de la Croisette. i Menton : Visit the serene beaches and beautiful gardens in this charming town near the Italian border",
+      "page_number": 2
     },
     {
-      "document": "Dinner Ideas - Sides_3.pdf",
-      "refined_text": "i Ingredients : o 4 cups chicken broth o 1/2 cup sliced mushrooms o 1/4 cup bamboo shoots o 1/4 cup tofu o 2 tablespoons soy sauce o 2 tablespoons rice vinegar o 1 tablespoon cornstarch o 1 teaspoon chili paste o 1 egg o 1/4 cup chopped green onions i Instructions : o Bring chicken broth to a boil o Mix cornstarch with water and add to the soup stirring until thickened o Garnish with chopped green onions and serve",
-      "page_number": 1
+      "document": "South of France - Cuisine.pdf",
+      "refined_text": "Here are some key types of food you can expect to find i seafood With its extensive coastline the South of France overs an abundance of fresh seafood i Provençal cuisine This style of cooking emphasizes fresh vegetables herbs and olive oil i octan cuisine This cuisine features hearty dishes like cassoulet a slow-cooked casserole with beans sausage and duck and alight a cheesy mashed potato dish",
+      "page_number": 2
     }
   ]
-}
